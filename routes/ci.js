@@ -2,7 +2,6 @@ import { Router } from 'express';
 import { modelCI } from '../models/ci.js';
 import { validateCi } from '../schemas/ci.js';
 
-
 export const ciRouter = Router();
 
 ciRouter.get('/', async (_req, res) => {

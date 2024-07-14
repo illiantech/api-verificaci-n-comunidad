@@ -19,12 +19,9 @@ export class modelUsers {
 		});
 
 		const verifyCI = await CI.find({});
-
-		if (!JSON.stringify(verifyCI).includes(user.ci)) return false;
-
 		const verifyUserPay = await User.find({});
 
-		if (JSON.stringify(verifyUserPay).includes(user.ci)) return false;
+		if (!JSON.stringify(verifyCI).includes(user.ci) || JSON.stringify(verifyUserPay).includes(user.ci)) return false;
 
 		user
 			.save()
