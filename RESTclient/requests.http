@@ -1,7 +1,7 @@
 POST http://localhost:3000/users
 Content-Type: application/json
 
-{ "name":"daniassdsdsasael pimentel illianoff gamez",
+{ "name":"daniel pimentel illianoff gamez",
     "tlf":4124963347,
     "ci":28262997,
     "address":"san jose calle sojo casa numero 9",

@@ -5,6 +5,10 @@ import { login } from './schemas/login.js';
 import { validateLogin } from './schemas/login.js';
 import cors from 'cors';
 import { dbOpen } from './database/mongo.js';
+import multer from 'multer';
+
+const upload = multer({ dest: './upload' });
+
 dbOpen();
 const app = express();
 
@@ -33,6 +37,12 @@ app.post('/login', async (req, res) => {
 		return res.status(400).json({ error: 'usuario no disponible', open: false });
 
 	return res.status(200).json({ message: 'usuario admisible', open: true });
+});
+
+app.post('/example', upload.single('ufile'), (req, res) => {
+	console.log(req.file, req.body);
+
+	return res.json(req.body);
 });
 
 app.listen(3000);

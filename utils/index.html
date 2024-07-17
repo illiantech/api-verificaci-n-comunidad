@@ -4,10 +4,41 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<style>
+			html {
+				background-color: black;
+				color: white;
+			}
+		</style>
 	</head>
 	<body>
 		hello
+
+		<form id="form">
+			<input type="number" id="" />
+			<input type="file" id="" />
+			<input type="submit" value="enviar" />
+		</form>
 		<script>
+			const form = document.getElementById('form');
+
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+
+				const formData = new FormData();
+				formData.append('ufile', e.target[1].files[0]);
+				formData.append('tlf', Number(e.target[0].value));
+
+				const res = await fetch('http://localhost:3000/example', {
+					method: 'POST',
+					body: formData
+				});
+
+				const data = await res.json();
+
+				console.log(data);
+			});
+
 			// fetch('http://localhost:3000/users')
 			// 	.then((res) => res.json())
 			// 	.then((res) => console.log(res));
